@@ -45,8 +45,8 @@
                 $WhereString            = $this->MakeWhereString($WhereStringAND , $WhereStringOR , 'AND');
                 $OrderByString          = $this->MakeOrderByString($Data['OrderBy']);
                 $LimitNumberRows        = $this->MakeLimitNubmerRowsString($Data['LimitNumberRows']);
-                $SetDataArray           = parent::SetData->Delete($Data['TableName'] , $WhereString , $OrderByString , $LimitNumberRows , $ExecuteData);
-                $Make['Query']          = parent::MakeQuery->Delete($SetDataArray);
+                $SetDataArray           = $this->SetData->Delete($Data['TableName'] , $WhereString , $OrderByString , $LimitNumberRows , $Make['ExecuteData']);
+                $Make['Query']          = $this->MakeQuery->Delete($SetDataArray);
             }
             return $Make;
         }
@@ -58,4 +58,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

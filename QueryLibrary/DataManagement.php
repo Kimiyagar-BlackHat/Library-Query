@@ -7,17 +7,28 @@
 //---------------------------------------------------------------------------------------------------------------------------        
         public function IsSetRequiredData($RequiredArray , $Data)
         {
-            foreach ($RequireValue as $Count => $Value) 
+            global $Where;
+            $Where = 0;
+            foreach ($RequiredArray as $Count => $Value) 
             {
-                if($Value == 'WhereAND' || $Value == 'WhereOR')
-                {
-
-                }
-
-                if(!$this->IsSetData($Data[$Value]))
+                if($Value != 'WhereOR' && $Value != 'WhereAND' && !$this->IsSetData($Data[$Value]))
                 {
                     return FALSE;
                 }
+            }            
+            foreach ($RequiredArray as $Count => $Value)
+            {
+                if($Value=='WhereAND' || $Value=='WhereOR')
+                {
+                    if($this->IsSetData($Data[$Value]))
+                    {
+                        $Where = 1;
+                    }
+                }
+            }
+            if($Where == 0)
+            {
+                return FALSE;
             }
             return TRUE;
         }
@@ -45,6 +56,7 @@
 //---------------------------------------------------------------------------------------------------------------------------
         public function CountNumberOfDimensionalArray($InputArray = array())
         {
+            $Count = NULL;
             foreach ($InputArray as $Key => $Value) 
             {
                 if($this->IsArray($Value))
@@ -137,4 +149,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

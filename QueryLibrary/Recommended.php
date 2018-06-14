@@ -112,14 +112,16 @@
         {
             if($this->IsFullArray($InputArray))
             {
-                $InputArray = unset($InputArray);
+                unset($InputArray);
+                $InputArray = array();
             }
             return $InputArray;
         }
 //---------------------------------------------------------------------------------------------------------------------------
         public function CheckNumberDimensionalArray($InputArray)
         {
-            foreach ($InputArray as $Key => $Value) 
+            $Count = NULL;
+            foreach ($InputArray as $Key => $Value)
             {
                 if($this->IsArray($Value))
                 {
@@ -155,4 +157,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

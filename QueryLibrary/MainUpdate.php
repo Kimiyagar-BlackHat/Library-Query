@@ -48,10 +48,10 @@
                 $WhereString         = $this->MakeWhereString($WhereStringAND , $WhereStringOR , 'AND');
                 $OrderByString       = $this->MakeOrderByString($Data['OrderBy']);
                 $LimitNumberRows     = $this->MakeLimitNubmerRowsString($Data['LimitNumberRows']);                
-                $SetDataArray        = $this->SetData->Update($Data['TableName'] , $SetString , $WhereString , $OrderByString , $LimitNumberRows , $ExecuteData);
+                $SetDataArray        = $this->SetData->Update($Data['TableName'] , $SetString , $WhereString , $OrderByString , $LimitNumberRows , $Make['ExecuteData']);
                 $Make['Query']       = $this->MakeQuery->Update($SetDataArray);
             }
-            return $Make
+            return $Make;
         }
 //---------------------------------------------------------------------------------------------------------------------------
         public function SetData($Make)
@@ -61,4 +61,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

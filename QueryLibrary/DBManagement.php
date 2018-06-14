@@ -1,22 +1,32 @@
 <?php 
 //---------------------------------------------------------------------------------------------------------------------------
     require 'Recommended.php';
+    require 'SetData.php';
+    require 'MakeQuery.php';    
 //---------------------------------------------------------------------------------------------------------------------------
     class DB_MANAGEMENT extends RECOMMENDED
     {
-        private $Connection = '';
+        public $SetData;
+        public $MakeQuery;
+        public $Connection = '';
+        const DB_HOST = 'DB_HOST';
+        const DB_USERNAME = 'DB_USERNAME';
+        const DB_PASSWORD = 'DB_PASSWORD';
+        const DB_NAME = 'DB_NAME';
 //---------------------------------------------------------------------------------------------------------------------------
         public function __construct()
         {
+            $this->SetData     = new SET_DATA;
+            $this->MakeQuery   = new MAKE_QUERY;
             if ($this->Connection == '') 
             {
                 try
                 {
                     @session_start();
-                    $Host         = /*DB_HOST*/;
-                    $Username     = /*DB_USERNAME*/;
-                    $Password     = /*DB_PASSWORD*/;
-                    $Name         = /*DB_NAME*/;
+                    $Host         = self::DB_HOST;
+                    $Username     = self::DB_USERNAME;
+                    $Password     = self::DB_PASSWORD;
+                    $Name         = self::DB_NAME;
                     $DNS          = "mysql:host={" . $Host . "};dbname={$Name}";
                     $this->Connection = new PDO($DNS , $Username , $Password);
                     $this->Connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,4 +46,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
- ?>

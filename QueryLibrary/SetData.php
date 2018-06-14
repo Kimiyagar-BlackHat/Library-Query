@@ -39,7 +39,7 @@
             return $SetDataArray;
         }    
 //---------------------------------------------------------------------------------------------------------------------------
-        public function Select($TableName , $ColumnListString , $WhereString , $GroupByString , $OrderByString , $LimitNumberRows , $AggregateFunctionArray , $Params)
+        public function Select($TableName , $ColumnListString , $WhereString , $GroupByString , $OrderByString , $LimitNumberRows , $AggregateFunctionArray , $ExecuteData)
         {
             $SetDataArray = array(
                                     'TableName'               => $TableName,
@@ -56,4 +56,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

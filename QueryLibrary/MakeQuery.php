@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------------------------------------------------------    
         public function Insert($SetDataArray)
         {
-            $InsertString         = 'INSERT INTO `'     . $SetDataArray['TableName']             . '` ';
+            $InsertString         = 'INSERT INTO' .' `' . $SetDataArray['TableName']             . '` ';
             $ColumnNameString     = '( '                . $SetDataArray['ColumnNameString']      . ' ) ';
             $ColumnValueString    = 'VALUES ( '         . $SetDataArray['ColumnValueString']     . ' ) ';
             $Query                = '"' . $InsertString . $ColumnNameString . $ColumnValueString . '"';
@@ -16,7 +16,7 @@
 //---------------------------------------------------------------------------------------------------------------------------    
         public function Delete($SetDataArray)
         {
-            $DeleteString         = 'DELETE FROM `'     . $SetDataArray['TableName']             . '` ';
+            $DeleteString         = 'DELETE FROM' .' `' . $SetDataArray['TableName']             . '` ';
             $WhereString          = 'WHERE '            . $SetDataArray['WhereString']           . ' ';
             $OrderByString        = NULL;
             $LimitString          = NULL;            
@@ -89,4 +89,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

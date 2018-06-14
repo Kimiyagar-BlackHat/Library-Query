@@ -1,18 +1,9 @@
 <?php
 //---------------------------------------------------------------------------------------------------------------------------
     require 'DataManagement.php';
-    require 'SetData.php';
-    require 'MakeQuery.php';
 //---------------------------------------------------------------------------------------------------------------------------
     class COMMON extends DATA_MANAGEMENT
     {
-        protected static $SetData;
-        protected static $MakeQuery
-        public function __construct()
-        {
-            $this->SetData     = new SET_DATA;
-            $this->MakeQuery   = new MAKE_QUERY;
-        }
 //---------------------------------------------------------------------------------------------------------------------------
         public function MakeExecuteDataArray($ColumnsArray=array() , $WhereArrayAND=array() , $WhereArrayOR=array() , $SetArray=array())
         {
@@ -56,14 +47,10 @@
         public function MakeColumnString($ColumnsArray , $Type)
         {
             $ColumnString = NULL;
-            switch ($Type) 
+            $Bind = '';
+            if($Type == 'Value')
             {
-                case 'Name':
-                    $Bind = '';
-                    break;
-                case 'Value':
-                    $Bind = ':';
-                    break;
+                $Bind = ':';
             }
             foreach ($ColumnsArray as $ColumnName) 
             {
@@ -94,16 +81,16 @@
         {
             $AllowedOperator = array('>','=','<','>=','<=','LIKE');
             $WhereString = NULL;
+            $WhereConditionsArray = array();
             foreach ($WhereArray as $Counter) 
             {
                 $Name         = $Counter['Name'];
                 $Operator     = $Counter['Option'];
-                $Value        = $Counter['Value'];
                 foreach ($AllowedOperator as $Sign) 
                 {
                     if($Operator == $Sign)
                     {
-                        $WhereConditionsArray[$Counter] = $Name . $Operator . ':' . $$Name . ' ' . $Clause . ' ';
+                        $WhereConditionsArray[$Counter] = $Name . $Operator . ':' . $Name . ' ' . $Clause . ' ';
                     }
                 }
             }
@@ -201,7 +188,7 @@
 //---------------------------------------------------------------------------------------------------------------------------
         public function ExecuteData($Make)
         {
-            $Temp = $this->Set->prepare($Make['Query']);
+            $Temp = $this->GetConnection()->prepare($Make['Query']);
             $Temp->execute($Make['ExecuteData']);
             $Result = $Temp->fetchAll(PDO::FETCH_ASSOC);
             return $Result;
@@ -209,4 +196,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

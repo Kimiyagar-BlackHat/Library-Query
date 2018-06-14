@@ -45,4 +45,3 @@
         echo 'ERROR';
         return;
     }
-?>

@@ -17,16 +17,16 @@
                 $Output['ColumnList'] = $this->ManageStandardArray($Data['TableName'],$this->SetJsonDecodeArray($Data['ColumnList']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['Sum']))
-                    $Output['AggregateFunction']['Sum'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Sum']));
+                    $Output['AggregateFunction']['Sum'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Sum']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Max']))
-                    $Output['AggregateFunction']['Max'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Max']));
+                    $Output['AggregateFunction']['Max'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Max']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Min']))
-                    $Output['AggregateFunction']['Min'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Min']));
+                    $Output['AggregateFunction']['Min'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Min']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Count']))
-                    $Output['AggregateFunction']['Count'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Count']));
+                    $Output['AggregateFunction']['Count'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Count']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['GroupBy']))
                     $Output['GroupBy'] = $this->ManageStandardArray($Data['TableName'],$this->SetJsonDecodeArray($Data['GroupBy']));
@@ -59,10 +59,10 @@
                 $OrderByString           = $this->MakeOrderByString($Data['OrderBy']);
                 $LimitNumberRows         = $this->MakeLimitNubmerRowsString($Data['LimitNumberRows']);    
                 $AggregateFunctionArray  = $this->MakeAggregateFunctionStringArray($Data['AggregateFunction']);
-                $SetDataArray            = $this->SetData->Select($Data['TableName'] , $ColumnListString , $WhereString , $GroupByString , $OrderByString , $LimitNumberRows , $AggregateFunctionArray , $ExecuteData);
+                $SetDataArray            = $this->SetData->Select($Data['TableName'] , $ColumnListString , $WhereString , $GroupByString , $OrderByString , $LimitNumberRows , $AggregateFunctionArray , $Make['ExecuteData']);
                 $Make['Query']           = $this->MakeQuery->Select($SetDataArray);
             }
-            return $Make
+            return $Make;
         }
 //---------------------------------------------------------------------------------------------------------------------------
         public function SetData($Make)
@@ -72,4 +72,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>

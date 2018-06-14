@@ -32,8 +32,8 @@
                 $Make['ExecuteData']     = $this->MakeExecuteDataArray($Data['Columns']);
                 $ColumnNameString        = $this->MakeColumnString($Data['Columns'] , 'Name');
                 $ColumnValueString       = $this->MakeColumnString($Data['Columns'] , 'Value');
-                $SetDataArray            = parent::SetData->Insert($Data['TableName'] , $ColumnNameString , $ColumnValueString , $ExecuteData);
-                $Make['Query']           = parent::MakeQuery->Insert($SetDataArray);
+                $SetDataArray            = $this->SetData->Insert($Data['TableName'] , $ColumnNameString , $ColumnValueString , $Make['ExecuteData']);
+                $Make['Query']           = $this->MakeQuery->Insert($SetDataArray);
             }
             return $Make;
         }
@@ -45,4 +45,3 @@
 //---------------------------------------------------------------------------------------------------------------------------
     }
 //---------------------------------------------------------------------------------------------------------------------------
-?>
