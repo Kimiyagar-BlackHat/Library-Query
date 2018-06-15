@@ -1,14 +1,14 @@
 <?php 
 //---------------------------------------------------------------------------------------------------------------------------
-    require 'Recommended.php';
-    require 'SetData.php';
-    require 'MakeQuery.php';    
+    require_once 'Recommended.php';
+    require_once 'SetData.php';
+    require_once 'MakeQuery.php';    
 //---------------------------------------------------------------------------------------------------------------------------
     class DB_MANAGEMENT extends RECOMMENDED
     {
         public $SetData;
         public $MakeQuery;
-        public $Connection = '';
+        public $Connection = NULL;
         const DB_HOST = 'DB_HOST';
         const DB_USERNAME = 'DB_USERNAME';
         const DB_PASSWORD = 'DB_PASSWORD';
@@ -18,7 +18,7 @@
         {
             $this->SetData     = new SET_DATA;
             $this->MakeQuery   = new MAKE_QUERY;
-            if ($this->Connection == '') 
+            if ($this->Connection == NULL) 
             {
                 try
                 {

@@ -1,8 +1,8 @@
 <?php
 //---------------------------------------------------------------------------------------------------------------------------
-    require 'Recommended.php';
+    require_once 'DataManagement.php';
 //---------------------------------------------------------------------------------------------------------------------------
-    class QUERY extends RECOMMENDED
+    class QUERY extends DATA_MANAGEMENT
     {
 //---------------------------------------------------------------------------------------------------------------------------
         public function Insert($Data)
@@ -36,19 +36,19 @@
             switch ($QueryName) 
             {
                 case 'Insert':
-                    require 'MainInsert.php';
+                    require_once 'MainInsert.php';
                     $Object = new INSERT;
                     break;
                 case 'Delete':
-                    require 'MainDelete.php';
+                    require_once 'MainDelete.php';
                     $Object = new DELETE;
                     break;
                 case 'Update':
-                    require 'MainUpdate.php';
+                    require_once 'MainUpdate.php';
                     $Object = new UPDATE;
                     break;
                 case 'Select':
-                    require 'MainSelect.php';
+                    require_once 'MainSelect.php';
                     $Object = new SELECT;
                     break;
             }
