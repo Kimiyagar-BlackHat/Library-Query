@@ -172,7 +172,6 @@
                         LimitNumberRows : 5 ,
                     }; 
 //------------------------------------------------------------------------------------------------------------------           
-        var FinalOutput = null;
         var jsonDataDelete = JSON.stringify(DataDelete);
         var jsonDataInsert = JSON.stringify(DataInsert);
         var jsonDataUpdate = JSON.stringify(DataUpdate);
@@ -186,7 +185,7 @@
             cache : false,
             success: function(DeleteResult)
             {
-                FinalOutput = FinalOutput + 'DeleteResult : ' + DeleteResult + '<br>';
+                document.write('DeleteResult : ' + DeleteResult + '<br>');
             }
         });    
 //------------------------------------------------------------------------------------------------------------------                   
@@ -198,7 +197,7 @@
             cache : false,
             success: function(InsertResult)
             {
-                FinalOutput = FinalOutput + 'InsertResult : ' + InsertResult + '<br>';
+                document.write('InsertResult : ' + InsertResult + '<br>');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------                   
@@ -210,7 +209,7 @@
             cache : false,
             success: function(UpdateResult)
             {
-                FinalOutput = FinalOutput + 'UpdateResult : ' + UpdateResult + '<br>';
+                document.write('UpdateResult : ' + UpdateResult + '<br>');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------                   
@@ -222,11 +221,10 @@
             cache : false,
             success: function(SelectResult)
             {
-                FinalOutput = FinalOutput + 'SelectResult : ' + SelectResult + '<br>';
+                document.write('SelectResult : ' + SelectResult + '<br>');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------
-    document.write(FinalOutput);
     </script>
 </body>
 </html>
