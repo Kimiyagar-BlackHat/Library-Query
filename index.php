@@ -58,7 +58,7 @@
                                         ExampleColumnName1 : 'ExampleColumnValue1', 
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
                                         ExampleColumnName3 : 'ExampleColumnValue3', 
-                                    }
+                                    },
                     }; 
 //------------------------------------------------------------------------------------------------------------------
         var DataUpdate = {
