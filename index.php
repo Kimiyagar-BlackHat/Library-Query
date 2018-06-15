@@ -68,7 +68,7 @@
                                         ExampleColumnName1 : 'ExampleColumnValue1', 
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
                                         ExampleColumnName3 : 'ExampleColumnValue3',                                         
-                                    }
+                                    },
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
@@ -117,20 +117,20 @@
                         Max        : 'ExampleColumnName',
                         Min        : 'ExampleColumnName',
                         Count      : 'ExampleColumnName',
-                        ColumnList :{
+                        ColumnList :[
                                         'ExampleColumnName1' ,
                                         'ExampleColumnName2' ,
                                         'ExampleColumnName3' ,
                                         'ExampleColumnName4' ,
                                         'ExampleColumnName5' ,
-                                    }
-                        GroupBy    :{
+                                    ],
+                        GroupBy    :[
                                         'ExampleColumnName1',
                                         'ExampleColumnName2',
                                         'ExampleColumnName3',
                                         'ExampleColumnName4',
                                         'ExampleColumnName5',
-                                    }
+                                    ],
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
@@ -172,7 +172,7 @@
                         LimitNumberRows : 5 ,
                     }; 
 //------------------------------------------------------------------------------------------------------------------           
-        var FinalOutput = NULL;
+        var FinalOutput = null;
         var jsonDataDelete = JSON.stringify(DataDelete);
         var jsonDataInsert = JSON.stringify(DataInsert);
         var jsonDataUpdate = JSON.stringify(DataUpdate);

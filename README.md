@@ -98,7 +98,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName1 : 'ExampleColumnValue1', 
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
                                         ExampleColumnName3 : 'ExampleColumnValue3',                                         
-                                    }
+                                    },
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
@@ -169,7 +169,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         'ExampleColumnName3' ,
                                         'ExampleColumnName4' ,
                                         'ExampleColumnName5' ,
-                                    }
+                                    },
                         GroupBy    :{
                                         'ExampleColumnName1',
                                         'ExampleColumnName2',
