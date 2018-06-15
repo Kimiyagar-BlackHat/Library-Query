@@ -185,7 +185,7 @@
             cache : false,
             success: function(DeleteResult)
             {
-                document.write('DeleteResult : ' + DeleteResult + '<br>');
+                console.log('DeleteResult : ' + DeleteResult + '\n');
             }
         });    
 //------------------------------------------------------------------------------------------------------------------                   
@@ -197,7 +197,7 @@
             cache : false,
             success: function(InsertResult)
             {
-                document.write('InsertResult : ' + InsertResult + '<br>');
+                console.log('InsertResult : ' + InsertResult + '\n');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------                   
@@ -209,7 +209,7 @@
             cache : false,
             success: function(UpdateResult)
             {
-                document.write('UpdateResult : ' + UpdateResult + '<br>');
+                console.log('UpdateResult : ' + UpdateResult + '\n');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------                   
@@ -221,7 +221,7 @@
             cache : false,
             success: function(SelectResult)
             {
-                document.write('SelectResult : ' + SelectResult + '<br>');
+                console.log('SelectResult : ' + SelectResult + '\n');
             }
         });   
 //------------------------------------------------------------------------------------------------------------------
