@@ -81,7 +81,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName1 : 'ExampleColumnValue1', 
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
                                         ExampleColumnName3 : 'ExampleColumnValue3', 
-                                    }
+                                    },
                     };
 ***********************************************************************************************************************************
 ||                                                         UPDATE                                                                ||
@@ -167,20 +167,20 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                         Max        : 'ExampleColumnName',
                         Min        : 'ExampleColumnName',
                         Count      : 'ExampleColumnName',
-                        ColumnList :{
+                        ColumnList :[
                                         'ExampleColumnName1' ,
                                         'ExampleColumnName2' ,
                                         'ExampleColumnName3' ,
                                         'ExampleColumnName4' ,
                                         'ExampleColumnName5' ,
-                                    },
-                        GroupBy    :{
+                                    ],
+                        GroupBy    :[
                                         'ExampleColumnName1',
                                         'ExampleColumnName2',
                                         'ExampleColumnName3',
                                         'ExampleColumnName4',
                                         'ExampleColumnName5',
-                                    }
+                                    ],
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
