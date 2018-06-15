@@ -14,7 +14,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
         Limit                 => An Int
 ----------------------------------------------------------------------------------------------------------------------------------
     Example JS Code :
-        var Data = [
+        var Data = {
                         QueryName  : 'Delete',
                         TableName  : 'ExampleTableName',
                         WhereAND   :{
@@ -56,7 +56,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName2 : 'ASC',
                                     },
                         LimitNumberRows : 5 ,   
-                    ];
+                    };
 ***********************************************************************************************************************************
 ||                                                         INSERT                                                                ||
 ***********************************************************************************************************************************
@@ -65,7 +65,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
         ColumnsArray          => Array 
 ----------------------------------------------------------------------------------------------------------------------------------
     Example JS Code :
-        var Data = [
+        var Data = {
                         QueryName  : 'Insert',
                         TableName  : 'ExampleTableName',
                         Columns    :{
@@ -73,7 +73,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
                                         ExampleColumnName3 : 'ExampleColumnValue3', 
                                     }
-                    ];
+                    };
 ***********************************************************************************************************************************
 ||                                                         UPDATE                                                                ||
 ***********************************************************************************************************************************
@@ -86,7 +86,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
         LimitNumberRows       => An Int
 ----------------------------------------------------------------------------------------------------------------------------------
     Example JS Code :
-        var Data = [
+        var Data = {
                         QueryName  : 'Update',
                         TableName  : 'ExampleTableName',
                         Set        :{
@@ -133,7 +133,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName2 : 'ASC',
                                     },
                         LimitNumberRows : 5 ,   
-                    ];
+                    };
 ***********************************************************************************************************************************
 ||                                                         SELECT                                                                ||
 ***********************************************************************************************************************************
@@ -151,7 +151,7 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
         LimitNumberRows     => An Int
 ----------------------------------------------------------------------------------------------------------------------------------
     Example JS Code :
-        var Data = [
+        var Data = {
                         QueryName  : 'Select',
                         TableName  : 'ExampleTableName',
                         Sum        : 'ExampleColumnName',
@@ -211,13 +211,20 @@ A library for dynamic query By {- kimiyagar - BlackHat -}
                                         ExampleColumnName2 : 'ASC',
                                     },
                         LimitNumberRows : 5 ,
-                    ];    
+                    };    
 ***********************************************************************************************************************************
 ||                                                         COMMON                                                                ||
 ***********************************************************************************************************************************
-        $.ajax ({
-                      type      :  'POST' ,
-                      cache     :  false ,
-                      url       :  'QueryController.php',
-                      data      :  Data
-                });
+        var jsonData = JSON.stringify(Data);    
+        $.ajax(
+        {
+            type  : "POST",
+            url   : "QueryController.php",
+            data  : {Data : jsonData}, 
+            cache : false,
+            success: function(Result)
+            {
+                /* Result is 'SUCCESS' or 'ERROR' */ 
+                /* Handle Result */
+            }
+        });  
