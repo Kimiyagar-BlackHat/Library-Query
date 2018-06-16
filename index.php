@@ -53,11 +53,11 @@
 //------------------------------------------------------------------------------------------------------------------
         var DataInsert = {
                         QueryName  : 'Insert',
-                        TableName  : 'admin',
+                        TableName  : 'ExampleTableName',
                         Columns    :{
-                                        admin_username : 'hamed', 
-                                        admin_password : '12456', 
-                                        admin_id : '2', 
+                                        ExampleColumnName1 : 'ExampleColumnValue1', 
+                                        ExampleColumnName2 : 'ExampleColumnValue2', 
+                                        ExampleColumnName3 : 'ExampleColumnValue3', 
                                     },
                     }; 
 //------------------------------------------------------------------------------------------------------------------
