@@ -14,14 +14,14 @@
 //..........................................................................................................................
                 $Output['TableName'] = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                if($this->IsSetData($Data['WhereAND']))
-                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereAND']));
+                if($this->IsFullArray($Data['WhereAND']))
+                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$Data['WhereAND']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                if($this->IsSetData($Data['WhereOR']))
-                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereOR']));
+                if($this->IsFullArray($Data['WhereOR']))
+                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$Data['WhereOR']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                if($this->IsSetData($Data['OrderBy']))
-                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['OrderBy']));
+                if($this->IsFullArray($Data['OrderBy']))
+                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$Data['OrderBy']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['LimitNumberRows']))
                     $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Output['TableName'] , $Data['LimitNumberRows']);
@@ -51,8 +51,9 @@
             return $Make;
         }
 //---------------------------------------------------------------------------------------------------------------------------
-        public function SetData($Make)
+        public function SetData($Make , $QueryName)
         {
+            $Make['QueryName'] = $QueryName;
             return $this->ExecuteData($Make);
         }
 //---------------------------------------------------------------------------------------------------------------------------

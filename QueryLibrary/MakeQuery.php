@@ -1,6 +1,6 @@
 <?php
 //---------------------------------------------------------------------------------------------------------------------------
-    class MAKE_QUERY
+    class MAKE_QUERY extends RECOMMENDED
     {
 //---------------------------------------------------------------------------------------------------------------------------    
         public function Insert($SetDataArray)
@@ -8,7 +8,7 @@
             $InsertString         = 'INSERT INTO' .' `' . $SetDataArray['TableName']             . '` ';
             $ColumnNameString     = '( '                . $SetDataArray['ColumnNameString']      . ' ) ';
             $ColumnValueString    = 'VALUES ( '         . $SetDataArray['ColumnValueString']     . ' ) ';
-            $Query                = '"' . $InsertString . $ColumnNameString . $ColumnValueString . '"';
+            $Query                = $InsertString . $ColumnNameString . $ColumnValueString ;
             return $Query;
         }
 //---------------------------------------------------------------------------------------------------------------------------    
@@ -26,7 +26,7 @@
             {
                 $LimitString      = 'LIMIT '            . $SetDataArray['LimitNumberRows']       . ' ';
             }
-            $Query = '"' . $DeleteString . $WhereString . $OrderByString . $LimitString . '"';
+            $Query = $DeleteString . $WhereString . $OrderByString . $LimitString ;
             return $Query;
         }    
 //---------------------------------------------------------------------------------------------------------------------------    

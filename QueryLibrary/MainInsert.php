@@ -14,7 +14,7 @@
 //..........................................................................................................................                
                 $Output['TableName']   = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                $Output['Columns']     = $this->ManageSingleDimensionalArray($Output['TableName'] , $this->SetJsonEncodeArray($Data['Columns']));
+                $Output['Columns']     = $this->ManageSingleDimensionalArray($Output['TableName'] , $Data['Columns']);
 //..........................................................................................................................
                 if($this->IsNull($Output['TableName']) || !$this->IsFullArray($Output['Columns']))
                 { 
@@ -38,8 +38,9 @@
             return $Make;
         }
 //---------------------------------------------------------------------------------------------------------------------------
-        public function SetData($Make)
+        public function SetData($Make , $QueryName)
         {
+            $Make['QueryName'] = $QueryName;
             return $this->ExecuteData($Make);
         }
 //---------------------------------------------------------------------------------------------------------------------------

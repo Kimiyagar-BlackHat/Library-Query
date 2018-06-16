@@ -25,7 +25,7 @@
                         {
                             if(!$this->IsSetData($ExecuteDataArray[$ColumnName]))
                             {
-                                $ExecuteDataArray[$ColumnName] = $ColumnValue;
+                                $ExecuteDataArray[':' . $ColumnName] = $ColumnValue;
                             }
                         }
                     }
@@ -35,7 +35,7 @@
                         {
                             if(!$this->IsSetData($ExecuteDataArray[$Data['Name']]))
                             {
-                                $ExecuteDataArray[$Data['Name']] = $Data['Value'];
+                                $ExecuteDataArray[':' . $Data['Name']] = $Data['Value'];
                             }
                         }
                     }
@@ -52,7 +52,7 @@
             {
                 $Bind = ':';
             }
-            foreach ($ColumnsArray as $ColumnName) 
+            foreach ($ColumnsArray as $ColumnName => $ColumnValue) 
             {
                 $ColumnString .= $Bind . $ColumnName . ' , ';
             }
@@ -82,11 +82,11 @@
             $AllowedOperator = array('>','=','<','>=','<=','LIKE');
             $WhereString = NULL;
             $WhereConditionsArray = array();
-            foreach ($WhereArray as $Counter) 
+            foreach ($WhereArray as $Counter => $Parameters) 
             {
-                $Name         = $Counter['Name'];
-                $Operator     = $Counter['Option'];
-                foreach ($AllowedOperator as $Sign) 
+                $Name         = $Parameters['Name'];
+                $Operator     = $Parameters['Option'];
+                foreach ($AllowedOperator as $Counter => $Sign) 
                 {
                     if($Operator == $Sign)
                     {
@@ -94,9 +94,9 @@
                     }
                 }
             }
-            foreach ($WhereConditionsArray as $Counter) 
+            foreach ($WhereConditionsArray as $Counter => $String) 
             {
-                $WhereString .= $WhereConditionsArray[$Counter];
+                $WhereString .= $String;
             }
             if($this->IsNotNull($WhereString))
             {
@@ -188,9 +188,13 @@
 //---------------------------------------------------------------------------------------------------------------------------
         public function ExecuteData($Make)
         {
+            $Result = TRUE;
             $Temp = $this->GetConnection()->prepare($Make['Query']);
             $Temp->execute($Make['ExecuteData']);
-            $Result = $Temp->fetchAll(PDO::FETCH_ASSOC);
+            if($Make['QueryName'] == 'Select')
+            {
+                $Result = $Temp->fetchAll(PDO::FETCH_ASSOC);
+            }
             return $Result;
         }
 //---------------------------------------------------------------------------------------------------------------------------

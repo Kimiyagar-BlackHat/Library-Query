@@ -14,16 +14,16 @@
 //..........................................................................................................................
                 $Output['TableName'] = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -            
-                $Output['Set'] = $this->ManageSingleDimensionalArray($Output['TableName'] , $this->SetJsonEncodeArray($Data['Set']));
+                $Output['Set'] = $this->ManageSingleDimensionalArray($Output['TableName'] , $Data['Set']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                    
                 if($this->IsSetData($Data['WhereAND']))
-                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereAND']));
+                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$Data['WhereAND']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
                 if($this->IsSetData($Data['WhereOR']))
-                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereOR']));
+                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$Data['WhereOR']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    
                 if($this->IsSetData($Data['OrderBy']))
-                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['OrderBy']));
+                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$Data['OrderBy']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -          
                 if($this->IsSetData($Data['LimitNumberRows']))
                     $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Output['TableName'] , $Data['LimitNumberRows']);
@@ -54,8 +54,9 @@
             return $Make;
         }
 //---------------------------------------------------------------------------------------------------------------------------
-        public function SetData($Make)
+        public function SetData($Make , $QueryName)
         {
+            $Make['QueryName'] = $QueryName;
             return $this->ExecuteData($Make);
         }
 //---------------------------------------------------------------------------------------------------------------------------

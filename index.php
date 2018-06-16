@@ -13,34 +13,34 @@
                 WhereAND   : {
                                 Count1 :{
                                             Name         : 'ANDExampleColumnName1',
-                                            Operator     : 'ANDExampleOperator1',
+                                            Option       : 'ANDExampleOption1',
                                             Value        : 'ANDExampleColumnValue1',
                                         }, 
                                 Count2 :{
                                             Name         : 'ANDExampleColumnName2',
-                                            Operator     : 'ANDExampleOperator2',
+                                            Option       : 'ANDExampleOption2',
                                             Value        : 'ANDExampleColumnValue2',
                                         },
                                 Count3 :{
                                             Name         : 'ANDExampleColumnName3',
-                                            Operator     : 'ANDExampleOperator3',
+                                            Option       : 'ANDExampleOption3',
                                             Value        : 'ANDExampleColumnValue3',
                                         },      
                             },
                 WhereOR    :{
                                 Count1 :{
                                             Name         : 'ANDExampleColumnName1',
-                                            Operator     : 'ANDExampleOperator1',
+                                            Option       : 'ANDExampleOption1',
                                             Value        : 'ANDExampleColumnValue1',
                                         }, 
                                 Count2 :{
                                             Name         : 'ANDExampleColumnName2',
-                                            Operator     : 'ANDExampleOperator2',
+                                            Option       : 'ANDExampleOption2',
                                             Value        : 'ANDExampleColumnValue2',
                                         },
                                 Count3 :{
                                             Name         : 'ANDExampleColumnName3',
-                                            Operator     : 'ANDExampleOperator3',
+                                            Option       : 'ANDExampleOption3',
                                             Value        : 'ANDExampleColumnValue3',
                                         },     
                             },
@@ -57,7 +57,7 @@
                         Columns    :{
                                         ExampleColumnName1 : 'ExampleColumnValue1', 
                                         ExampleColumnName2 : 'ExampleColumnValue2', 
-                                        ExampleColumnName3 : 'ExampleColumnValue3', 
+                                        ExampleColumnName3 : 'ExampleColumnValue3',  
                                     },
                     }; 
 //------------------------------------------------------------------------------------------------------------------
@@ -72,34 +72,34 @@
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
-                                                    Operator     : 'ANDExampleOperator1',
+                                                    Option       : 'ANDExampleOption1',
                                                     Value        : 'ANDExampleColumnValue1',
                                                 }, 
                                         Count2 :{
                                                     Name         : 'ANDExampleColumnName2',
-                                                    Operator     : 'ANDExampleOperator2',
+                                                    Option       : 'ANDExampleOption2',
                                                     Value        : 'ANDExampleColumnValue2',
                                                 },
                                         Count3 :{
                                                     Name         : 'ANDExampleColumnName3',
-                                                    Operator     : 'ANDExampleOperator3',
+                                                    Option       : 'ANDExampleOption3',
                                                     Value        : 'ANDExampleColumnValue3',
                                                 },      
                                     },
                         WhereOR    :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
-                                                    Operator     : 'ANDExampleOperator1',
+                                                    Option       : 'ANDExampleOption1',
                                                     Value        : 'ANDExampleColumnValue1',
                                                 }, 
                                         Count2 :{
                                                     Name         : 'ANDExampleColumnName2',
-                                                    Operator     : 'ANDExampleOperator2',
+                                                    Option       : 'ANDExampleOption2',
                                                     Value        : 'ANDExampleColumnValue2',
                                                 },
                                         Count3 :{
                                                     Name         : 'ANDExampleColumnName3',
-                                                    Operator     : 'ANDExampleOperator3',
+                                                    Option       : 'ANDExampleOption3',
                                                     Value        : 'ANDExampleColumnValue3',
                                                 },     
                                     },
@@ -134,34 +134,34 @@
                         WhereAND   :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
-                                                    Operator     : 'ANDExampleOperator1',
+                                                    Option       : 'ANDExampleOption1',
                                                     Value        : 'ANDExampleColumnValue1',
                                                 }, 
                                         Count2 :{
                                                     Name         : 'ANDExampleColumnName2',
-                                                    Operator     : 'ANDExampleOperator2',
+                                                    Option       : 'ANDExampleOption2',
                                                     Value        : 'ANDExampleColumnValue2',
                                                 },
                                         Count3 :{
                                                     Name         : 'ANDExampleColumnName3',
-                                                    Operator     : 'ANDExampleOperator3',
+                                                    Option       : 'ANDExampleOption3',
                                                     Value        : 'ANDExampleColumnValue3',
                                                 },      
                                     },
                         WhereOR    :{
                                         Count1 :{
                                                     Name         : 'ANDExampleColumnName1',
-                                                    Operator     : 'ANDExampleOperator1',
+                                                    Option       : 'ANDExampleOption1',
                                                     Value        : 'ANDExampleColumnValue1',
                                                 }, 
                                         Count2 :{
                                                     Name         : 'ANDExampleColumnName2',
-                                                    Operator     : 'ANDExampleOperator2',
+                                                    Option       : 'ANDExampleOption2',
                                                     Value        : 'ANDExampleColumnValue2',
                                                 },
                                         Count3 :{
                                                     Name         : 'ANDExampleColumnName3',
-                                                    Operator     : 'ANDExampleOperator3',
+                                                    Option       : 'ANDExampleOption3',
                                                     Value        : 'ANDExampleColumnValue3',
                                                 },     
                                     },
@@ -180,7 +180,7 @@
         $.ajax(
         {
             type  : "POST",
-            url   : "QueryController.php",
+            url   : "Query/QueryController.php",
             data  : {Data : jsonDataDelete}, 
             cache : false,
             success: function(DeleteResult)
@@ -192,7 +192,7 @@
         $.ajax(
         {
             type  : "POST",
-            url   : "QueryController.php",
+            url   : "Query/QueryController.php",
             data  : {Data : jsonDataInsert}, 
             cache : false,
             success: function(InsertResult)
@@ -204,7 +204,7 @@
         $.ajax(
         {
             type  : "POST",
-            url   : "QueryController.php",
+            url   : "Query/QueryController.php",
             data  : {Data : jsonDataUpdate}, 
             cache : false,
             success: function(UpdateResult)
@@ -216,7 +216,7 @@
         $.ajax(
         {
             type  : "POST",
-            url   : "QueryController.php",
+            url   : "Query/QueryController.php",
             data  : {Data : jsonDataSelect}, 
             cache : false,
             success: function(SelectResult)

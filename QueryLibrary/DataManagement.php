@@ -11,24 +11,40 @@
             $Where = 0;
             foreach ($RequiredArray as $Count => $Value) 
             {
-                if($Value != 'WhereOR' && $Value != 'WhereAND' && !$this->IsSetData($Data[$Value]))
+                if($this->IsArray($Data[$Value]))
                 {
-                    return FALSE;
+                    if($Value != 'WhereOR' && $Value != 'WhereAND' && !$this->IsFullArray($Data[$Value]))
+                    {
+                        return FALSE;
+                    }
+                }
+                else
+                {
+                    if($Value != 'WhereOR' && $Value != 'WhereAND' && !$this->IsNotNull($Data[$Value]))
+                    {
+                        return FALSE;
+                    }
                 }
             }            
             foreach ($RequiredArray as $Count => $Value)
             {
                 if($Value=='WhereAND' || $Value=='WhereOR')
                 {
-                    if($this->IsSetData($Data[$Value]))
+                    if($this->IsFullArray($Data[$Value]))
                     {
                         $Where = 1;
                     }
                 }
             }
-            if($Where == 0)
+            foreach ($RequiredArray as $Count => $Value) 
             {
-                return FALSE;
+                if($this->IsArray($Data[$Value]) && ($Value == 'WhereAND' || $Value == 'WhereOR'))
+                {
+                    if($Where == 0)
+                    {
+                        return FALSE;
+                    }
+                }
             }
             return TRUE;
         }
@@ -37,11 +53,11 @@
         {
             if($this->IsFullArray($this->GetColumnsListOfTable($TableName)))
             {
-                return FALSE;
+                return TRUE;
             }
             else
             {
-                return TRUE;
+                return FALSE;
             }
         }
 //---------------------------------------------------------------------------------------------------------------------------
@@ -108,17 +124,15 @@
             $OutputArray = array();
             if($this->IsFullArray($InputArray) && $this->CheckColumnList($TableName))
             {
-                foreach ($InputArray as $Data) 
+                foreach ($InputArray as $Data => $Parameters) 
                 {
-                    if($this->IsFullArray($Data))
+                    if($this->IsFullArray($Parameters))
                     {
-                        if($this->IsSetData($Data['Name']) && $this->IsColumnExist($TableName,$Data['Name']))
+                        if($this->IsSetData($Parameters['Name']) && $this->IsColumnExist($TableName,$Parameters['Name']))
                         {
-                            if($this->IsSetData($Data['Option']) && $this->IsSetData($Data['Value'])) 
+                            if($this->IsSetData($Parameters['Option']) && $this->IsSetData($Parameters['Value'])) 
                             {
-                                $OutputArray[$Data]['Name']     = $Data['Name'];
-                                $OutputArray[$Data]['Option']   = $Data['Option'];
-                                $OutputArray[$Data]['Value']    = $Data['Value'];
+                                    $OutputArray[$Data] = $Parameters;
                             }
                         }
                     }

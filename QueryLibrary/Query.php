@@ -58,7 +58,7 @@
                     $Make = $Object->Process($Data);
                     if($this->IsFullArray($Make))
                     {
-                        $Result = $Object->SetData($Make);
+                        $Result = $Object->SetData($Make , $QueryName);
                     }
                 }   
             }         
