@@ -9,10 +9,10 @@
         public $SetData;
         public $MakeQuery;
         public $Connection = NULL;
-        const DB_HOST     = 'localhost';
-        const DB_USERNAME = 'phpmyadmin';
-        const DB_PASSWORD = '0016157982';
-        const DB_NAME     = 'ebanzha';
+        const DB_HOST     = 'DB_HOST';
+        const DB_USERNAME = 'DB_USERNAME';
+        const DB_PASSWORD = 'DB_PASSWORD';
+        const DB_NAME     = 'DB_NAME';
 //---------------------------------------------------------------------------------------------------------------------------
         public function __construct()
         {
