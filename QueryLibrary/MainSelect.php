@@ -14,35 +14,39 @@
 //..........................................................................................................................
                 $Output['TableName'] = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
-                $Output['ColumnList'] = $this->ManageStandardArray($Data['TableName'],$this->SetJsonDecodeArray($Data['ColumnList']));
+                $Output['ColumnList'] = $this->ManageStandardArray($Output['TableName'],$this->SetJsonEncodeArray($Data['ColumnList']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['Sum']))
-                    $Output['AggregateFunction']['Sum'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Sum']);
+                    $Output['AggregateFunction']['Sum'] = $this->ManageAggregateFunction($Output['TableName'],$Data['Sum']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Max']))
-                    $Output['AggregateFunction']['Max'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Max']);
+                    $Output['AggregateFunction']['Max'] = $this->ManageAggregateFunction($Output['TableName'],$Data['Max']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Min']))
-                    $Output['AggregateFunction']['Min'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Min']);
+                    $Output['AggregateFunction']['Min'] = $this->ManageAggregateFunction($Output['TableName'],$Data['Min']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['Count']))
-                    $Output['AggregateFunction']['Count'] = $this->ManageAggregateFunction($Data['TableName'],$Data['Count']);
+                    $Output['AggregateFunction']['Count'] = $this->ManageAggregateFunction($Output['TableName'],$Data['Count']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['GroupBy']))
-                    $Output['GroupBy'] = $this->ManageStandardArray($Data['TableName'],$this->SetJsonDecodeArray($Data['GroupBy']));
+                    $Output['GroupBy'] = $this->ManageStandardArray($Output['TableName'],$this->SetJsonEncodeArray($Data['GroupBy']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['WhereAND']))
-                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['WhereAND']));
+                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereAND']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['WhereOR']))
-                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['WhereOR']));
+                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereOR']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['OrderBy']))
-                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['OrderBy']));
+                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['OrderBy']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -                
                 if($this->IsSetData($Data['LimitNumberRows']))
-                    $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Data['TableName'] , $Data['LimitNumberRows']);
+                    $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Output['TableName'] , $Data['LimitNumberRows']);
 //..........................................................................................................................
+                if((!$this->IsFullArray($Output['WhereAND']) && !$this->IsFullArray($Output['WhereOR'])) || $this->IsNull($Output['TableName']) || !$this->IsFullArray($Output['ColumnList']))
+                {
+                    $Output = $this->SetEmptyArray($Output);
+                }                
             }
             return $Output;
         }

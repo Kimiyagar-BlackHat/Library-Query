@@ -41,18 +41,25 @@
 //---------------------------------------------------------------------------------------------------------------------------
         public function GetNumberOfRows($TableName)
         {
+            $NumberOfRows = NULL;
             $Temp = $this->GetConnection()->prepare("SHOW TABLE STATUS LIKE '" . $TableName . "'");
             $Temp->execute();
-            $TableStatus = $Temp->fetchAll(PDO::FETCH_ASSOC);
-            $NumberOfRows = $TableStatus['Rows'];
+            if($TableStatus = $Temp->fetchAll(PDO::FETCH_ASSOC))
+            {  
+                $NumberOfRows = $TableStatus[0]['Rows'];
+            }
             return $NumberOfRows;
         }
 //---------------------------------------------------------------------------------------------------------------------------
         public function GetColumnsListOfTable($TableName)
         {
-            $Temp = $this->GetConnection()->prepare('DESCRIBE ' . $TableName);
-            $Temp->execute();
-            $Columns = $Temp->fetchAll(PDO::FETCH_COLUMN);
+            $Columns = array();
+            if($TableName != NULL)
+            {
+                $Temp = $this->GetConnection()->prepare('DESCRIBE ' . $TableName);
+                $Temp->execute();
+                $Columns = $Temp->fetchAll(PDO::FETCH_COLUMN);
+            }
             return $Columns;
         }
 //---------------------------------------------------------------------------------------------------------------------------

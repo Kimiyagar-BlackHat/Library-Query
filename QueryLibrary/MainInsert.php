@@ -14,7 +14,7 @@
 //..........................................................................................................................                
                 $Output['TableName']   = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                $Output['Columns']     = $this->ManageSingleDimensionalArray($Data['TableName'] , $this->SetJsonDecodeArray($Data['Columns']));
+                $Output['Columns']     = $this->ManageSingleDimensionalArray($Output['TableName'] , $this->SetJsonEncodeArray($Data['Columns']));
 //..........................................................................................................................
                 if($this->IsNull($Output['TableName']) || !$this->IsFullArray($Output['Columns']))
                 { 

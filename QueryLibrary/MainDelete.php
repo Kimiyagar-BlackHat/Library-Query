@@ -15,16 +15,16 @@
                 $Output['TableName'] = $this->ManageTableName($Data['TableName']);
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['WhereAND']))
-                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['WhereAND']));
+                    $Output['WhereAND'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereAND']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['WhereOR']))
-                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['WhereOR']));
+                    $Output['WhereOR'] = $this->ManageMultiDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['WhereOR']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['OrderBy']))
-                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Data['TableName'],$this->SetJsonDecodeArray($Data['OrderBy']));
+                    $Output['OrderBy'] = $this->ManageSingleDimensionalArray($Output['TableName'],$this->SetJsonEncodeArray($Data['OrderBy']));
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
                 if($this->IsSetData($Data['LimitNumberRows']))
-                    $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Data['TableName'] , $Data['LimitNumberRows']);
+                    $Output['LimitNumberRows'] = $this->ManageLimitNumberRows($Output['TableName'] , $Data['LimitNumberRows']);
 //..........................................................................................................................
                 if((!$this->IsFullArray($Output['WhereAND']) && !$this->IsFullArray($Output['WhereOR'])) || $this->IsNull($Output['TableName']))
                 {
